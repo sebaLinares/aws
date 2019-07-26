@@ -1,3 +1,7 @@
+// ========================================================= //
+// Function to get night shift and urgency drugstore in Chile
+// then add them to the table 'farmacias' from AWS DynamoDB
+// ========================================================= //
 const axios = require('axios')
 const AWS = require('aws-sdk')
 const docClient = new AWS.DynamoDB.DocumentClient({ region: 'us-east-2' })

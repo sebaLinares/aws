@@ -1,3 +1,6 @@
+// ======================================================== //
+// Function to delete the 'farmacias' table in AWS Dynamodb
+// ======================================================== //
 const axios = require('axios')
 const AWS = require('aws-sdk')
 const dynamodb = new AWS.DynamoDB({ region: 'us-east-2' })
