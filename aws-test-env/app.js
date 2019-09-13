@@ -3,6 +3,7 @@ const app = express()
 const axios = require('axios')
 
 const PORT = 3000
+const URL_FARMACIAS = 'https://49bgz54952.execute-api.us-east-2.amazonaws.com/prod/farmacias-turno'
 
 app.get('/', (req, res) => {
   try {
@@ -12,11 +13,20 @@ app.get('/', (req, res) => {
   }
 })
 
-app.get('/farmacias', (req, res) => {
+app.get('/farmacias', async (req, res) => {
   try {
-    res.send('Endpoint para farmacias').status(200)
+    console.log('trying farmacias')
+
+    const resp = await axios.get(URL_FARMACIAS)
+    const farmacias = resp.data.body.data.Items
+    // farmacias length
+    console.log(farmacias.length)
+
+
+    res.status(200)
   } catch(err) {
-    res.status(500).json({err})
+    console.log('catched error: ', err)
+    res.status(500).json({err: err})
   }
 })
 
